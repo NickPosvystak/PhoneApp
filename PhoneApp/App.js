@@ -8,10 +8,13 @@ import {
   SafeAreaView,
   ScrollView,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import Car from "./Images/car.png";
 import { useFonts } from "expo-font";
 import { useState } from "react";
+import { RegistrationScreen } from "./Screens/RegistrationScreen";
+import { LoginScreen } from "./Screens/LoginScreen";
 
 const COURSES = [
   {
@@ -41,23 +44,31 @@ export default function App() {
     return null;
   }
   const [courses, setCourses] = useState(COURSES);
+  const signIn = () => {
+    console.debug("Welcome!");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>
-        Open up App.js to start working on your app!
-      </Text>
       <Text style={{ fontFamily: "Inter-Black", fontSize: 30 }}>
         That what I changed in my app :)
       </Text>
       <Image source={Car} style={{ width: 350, height: 200 }} />
       <StatusBar style="auto" />
-
+      <View>
+        <RegistrationScreen />
+      </View>
+      <View>
+        <LoginScreen />
+      </View>
       <FlatList
         data={courses}
         renderItem={({ item }) => <Text>{item.title}</Text>}
         keyExtractor={(item) => item.id}
       />
+      <TouchableOpacity style={styles.button} onPress={signIn}>
+        <Text style={styles.buttonTitle}>Sign In</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -66,6 +77,7 @@ const styles = StyleSheet.create({
   container: {
     height: Platform.OS === "ios" ? 50 : 100,
     flex: 1,
+    paddingTop: 20,
     ...Platform.select({
       ios: {
         backgroundColor: "#000",
@@ -82,5 +94,14 @@ const styles = StyleSheet.create({
     borderColor: "#fff",
     paddingBottom: 20,
     backgroundColor: "#61dafb",
+  },
+  button: {
+    borderColor: "#fff",
+    backgroundColor: "#61dafb",
+    borderRadius: 4,
+  },
+  buttonTitle: {
+    borderColor: "#fff",
+    padding: 6,
   },
 });
