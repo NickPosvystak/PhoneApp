@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,11 @@ import {
 } from "react-native";
 
 export const RegistrationScreen = () => {
+  const emailInput = useRef(null);
+
   const signIn = () => {
+ const email = emailInput.current.value;
+    console.log('email: ', email); 
     console.debug("Welcome!");
   };
   return (
@@ -18,8 +22,9 @@ export const RegistrationScreen = () => {
         <Text>Email</Text>
         <TextInput
           style={styles.emailInput}
+          ref={emailInput}
           placeholder="Enter your email"
-          autoComplete="email"
+          autoCompleteType="email"
         ></TextInput>
       </View>
       <View style={[styles.inputContainer, styles.lastChild]}>

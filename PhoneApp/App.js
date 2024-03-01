@@ -6,34 +6,14 @@ import {
   View,
   Image,
   SafeAreaView,
-  ScrollView,
-  FlatList,
-  TouchableOpacity,
+   TouchableWithoutFeedback,
+   Keyboard,
 } from "react-native";
 import Car from "./Images/car.png";
 import { useFonts } from "expo-font";
 import { useState } from "react";
 import { RegistrationScreen } from "./Screens/RegistrationScreen";
 import { LoginScreen } from "./Screens/LoginScreen";
-
-const COURSES = [
-  {
-    id: "45k6-j54k-4jth",
-    title: "HTML",
-  },
-  {
-    id: "4116-jfk5-43rh",
-    title: "JavaScript",
-  },
-  {
-    id: "4d16-5tt5-4j55",
-    title: "React",
-  },
-  {
-    id: "LG16-ant5-0J25",
-    title: "React Native",
-  },
-];
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -43,14 +23,11 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  const [courses, setCourses] = useState(COURSES);
-  const signIn = () => {
-    console.debug("Welcome!");
-  };
 
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+
     <SafeAreaView style={styles.container}>
-    
       <Image source={Car} style={{ width: 350, height: 200 }} />
       <StatusBar style="auto" />
       <View>
@@ -59,11 +36,8 @@ export default function App() {
       <View>
         <LoginScreen />
       </View>
-    
-      <TouchableOpacity style={styles.button} onPress={signIn}>
-        <Text style={styles.buttonTitle}>Sign In</Text>
-      </TouchableOpacity>
     </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
 
