@@ -1,19 +1,26 @@
-import { StatusBar } from "expo-status-bar";
+// import "react-native-gesture-handler";
+import "react-native-gesture-handler";
+
+import React from "react"; 
+
 import {
   Platform,
   StyleSheet,
   Text,
   View,
-  Image,
   SafeAreaView,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import Car from "./Images/car.png";
 import { useFonts } from "expo-font";
-import { useState } from "react";
 import { RegistrationScreen } from "./Screens/RegistrationScreen";
 import { LoginScreen } from "./Screens/LoginScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import { createStackNavigator } from "@react-navigation/stack";
+import Home from "./Screens/Home";
+
+const MainStack = createStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,18 +32,24 @@ export default function App() {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <SafeAreaView style={styles.container}>
-        {/* <Image source={Car} style={{ width: 350, height: 200 }} /> */}
-        <View style={styles.box}>
-          <RegistrationScreen />
-        </View>
-        <View>
-          <LoginScreen />
-        </View>
-        <StatusBar style="auto" />
-      </SafeAreaView>
-    </TouchableWithoutFeedback>
+    <NavigationContainer>
+      {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
+        <MainStack.Navigator initialRouteName="Home">
+          <MainStack.Screen name= "Registration" component={RegistrationScreen} />
+          <MainStack.Screen name= "Login" component={LoginScreen} />
+          <MainStack.Screen name= "Home" component={Home} />
+        </MainStack.Navigator>
+        <SafeAreaView style={styles.container}>
+          {/* <View style={styles.box}>
+            <RegistrationScreen />
+          </View>
+          <View>
+            <LoginScreen />
+          </View> */}
+          <StatusBar style="auto" />
+        </SafeAreaView>
+      {/* </TouchableWithoutFeedback> */}
+    </NavigationContainer>
   );
 }
 

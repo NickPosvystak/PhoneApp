@@ -1,6 +1,8 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
   Alert,
+  Button,
   StyleSheet,
   Text,
   TextInput,
@@ -12,14 +14,13 @@ export const RegistrationScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
- 
-
   const signIn = () => {
-    Alert.alert("Credentials", `${email} + ${password}`)
-    console.log('email: ', name); 
-    console.log('email: ', password); 
+    Alert.alert("Credentials", `${email} + ${password}`);
+    console.log("email: ", name);
+    console.log("email: ", password);
     console.debug("Welcome!");
   };
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Registration</Text>
@@ -46,6 +47,10 @@ export const RegistrationScreen = () => {
       <TouchableOpacity style={styles.button} onPress={signIn}>
         <Text style={styles.buttonTitle}>Sign In</Text>
       </TouchableOpacity>
+      <Button
+        title="Go to login"
+        onPress={() => navigation.navigate("Login")}
+      />
     </View>
   );
 };
