@@ -50,9 +50,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ fontFamily: "Inter-Black", fontSize: 30 }}>
-        That what I changed in my app :)
-      </Text>
+    
       <Image source={Car} style={{ width: 350, height: 200 }} />
       <StatusBar style="auto" />
       <View>
@@ -61,11 +59,7 @@ export default function App() {
       <View>
         <LoginScreen />
       </View>
-      <FlatList
-        data={courses}
-        renderItem={({ item }) => <Text>{item.title}</Text>}
-        keyExtractor={(item) => item.id}
-      />
+    
       <TouchableOpacity style={styles.button} onPress={signIn}>
         <Text style={styles.buttonTitle}>Sign In</Text>
       </TouchableOpacity>
