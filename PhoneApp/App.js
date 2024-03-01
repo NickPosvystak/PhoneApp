@@ -6,8 +6,8 @@ import {
   View,
   Image,
   SafeAreaView,
-   TouchableWithoutFeedback,
-   Keyboard,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import Car from "./Images/car.png";
 import { useFonts } from "expo-font";
@@ -26,17 +26,16 @@ export default function App() {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
-    <SafeAreaView style={styles.container}>
-      <Image source={Car} style={{ width: 350, height: 200 }} />
-      <StatusBar style="auto" />
-      <View>
-        <RegistrationScreen />
-      </View>
-      <View>
-        <LoginScreen />
-      </View>
-    </SafeAreaView>
+      <SafeAreaView style={styles.container}>
+        {/* <Image source={Car} style={{ width: 350, height: 200 }} /> */}
+        <View style={styles.box}>
+          <RegistrationScreen />
+        </View>
+        <View>
+          <LoginScreen />
+        </View>
+        <StatusBar style="auto" />
+      </SafeAreaView>
     </TouchableWithoutFeedback>
   );
 }
@@ -57,6 +56,9 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     justifyContent: "center",
+  },
+  box: {
+    paddingBottom: 10,
   },
   title: {
     borderColor: "#fff",

@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import {
+  Alert,
   StyleSheet,
   Text,
   TextInput,
@@ -8,11 +9,15 @@ import {
 } from "react-native";
 
 export const RegistrationScreen = () => {
-  const emailInput = useRef(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+ 
 
   const signIn = () => {
- const email = emailInput.current.value;
-    console.log('email: ', email); 
+    Alert.alert("Credentials", `${email} + ${password}`)
+    console.log('email: ', name); 
+    console.log('email: ', password); 
     console.debug("Welcome!");
   };
   return (
@@ -22,9 +27,10 @@ export const RegistrationScreen = () => {
         <Text>Email</Text>
         <TextInput
           style={styles.emailInput}
-          ref={emailInput}
           placeholder="Enter your email"
           autoCompleteType="email"
+          value={email}
+          onChangeText={setEmail}
         ></TextInput>
       </View>
       <View style={[styles.inputContainer, styles.lastChild]}>
@@ -33,6 +39,8 @@ export const RegistrationScreen = () => {
           style={styles.emailInput}
           placeholder="Enter your password"
           secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
         ></TextInput>
       </View>
       <TouchableOpacity style={styles.button} onPress={signIn}>
