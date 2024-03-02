@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import {
   Alert,
   Button,
+  Platform,
+  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
@@ -22,44 +24,63 @@ export const RegistrationScreen = () => {
   };
   const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Registration</Text>
-      <View style={styles.inputContainer}>
-        <Text>Email</Text>
-        <TextInput
-          style={styles.emailInput}
-          placeholder="Enter your email"
-          autoCompleteType="email"
-          value={email}
-          onChangeText={setEmail}
-        ></TextInput>
+    <SafeAreaView style={styles.container1}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Registration</Text>
+        <View style={styles.inputContainer}>
+          <Text>Email</Text>
+          <TextInput
+            style={styles.emailInput}
+            placeholder="Enter your email"
+            autoCompleteType="email"
+            value={email}
+            onChangeText={setEmail}
+          ></TextInput>
+        </View>
+        <View style={[styles.inputContainer, styles.lastChild]}>
+          <Text>Password</Text>
+          <TextInput
+            style={styles.emailInput}
+            placeholder="Enter your password"
+            secureTextEntry={true}
+            value={password}
+            onChangeText={setPassword}
+          ></TextInput>
+        </View>
+        <TouchableOpacity style={styles.button} onPress={signIn}>
+          <Text style={styles.buttonTitle}>Sign In</Text>
+        </TouchableOpacity>
+        <View style={styles.buttonBox}>
+          <Button
+            title="Go to login"
+            onPress={() => navigation.navigate("Login")}
+          />
+        </View>
       </View>
-      <View style={[styles.inputContainer, styles.lastChild]}>
-        <Text>Password</Text>
-        <TextInput
-          style={styles.emailInput}
-          placeholder="Enter your password"
-          secureTextEntry={true}
-          value={password}
-          onChangeText={setPassword}
-        ></TextInput>
-      </View>
-      <TouchableOpacity style={styles.button} onPress={signIn}>
-        <Text style={styles.buttonTitle}>Sign In</Text>
-      </TouchableOpacity>
-      <Button
-        title="Go to login"
-        onPress={() => navigation.navigate("Login")}
-      />
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  container1: {
+    height: Platform.OS === "ios" ? 50 : 100,
+    flex: 1,
+    paddingTop: 20,
+    ...Platform.select({
+      ios: {
+        backgroundColor: "#000",
+      },
+      android: {
+        backgroundColor: "#000",
+      },
+    }),
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
   container: {
     flex: 1,
     width: 350,
-    maxHeight: 349,
     backgroundColor: "rgb(255, 108, 0)",
     borderRadius: 25,
     padding: 20,
@@ -95,5 +116,9 @@ const styles = StyleSheet.create({
   buttonTitle: {
     fontFamily: "Inter-Black",
     fontSize: 16,
+  },
+  buttonBox: {
+    paddingTop: 30,
+    width: 120,
   },
 });

@@ -1,16 +1,14 @@
 // import "react-native-gesture-handler";
 import "react-native-gesture-handler";
 
-import React from "react"; 
+import React from "react";
 
 import {
   Platform,
   StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
   TouchableWithoutFeedback,
   Keyboard,
+  Button,
 } from "react-native";
 import { useFonts } from "expo-font";
 import { RegistrationScreen } from "./Screens/RegistrationScreen";
@@ -34,20 +32,32 @@ export default function App() {
   return (
     <NavigationContainer>
       {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
-        <MainStack.Navigator initialRouteName="Home">
-          <MainStack.Screen name= "Registration" component={RegistrationScreen} />
-          <MainStack.Screen name= "Login" component={LoginScreen} />
-          <MainStack.Screen name= "Home" component={Home} />
-        </MainStack.Navigator>
-        <SafeAreaView style={styles.container}>
-          {/* <View style={styles.box}>
-            <RegistrationScreen />
-          </View>
-          <View>
-            <LoginScreen />
-          </View> */}
-          <StatusBar style="auto" />
-        </SafeAreaView>
+      <MainStack.Navigator>
+        <MainStack.Screen name="Registration" component={RegistrationScreen} />
+        <MainStack.Screen name="Login" component={LoginScreen} />
+        <MainStack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: "Home Screen",
+            headerStyle: { backgroundColor: "#f4511e" },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+              fontSize: 20,
+            },
+            headerRight: () => (
+              <Button
+                onPress={() => alert("This is a Home button!")}
+                title="Press Me"
+                color="#000"
+              />
+            ),
+          }}
+        />
+      </MainStack.Navigator>
+
+      <StatusBar style="auto" />
       {/* </TouchableWithoutFeedback> */}
     </NavigationContainer>
   );
