@@ -19,8 +19,8 @@ export const RegistrationScreen = () => {
 
   const signIn = () => {
     Alert.alert("Credentials", `${email} + ${password}`);
-    console.log("email: ", name);
-    console.log("email: ", password);
+    console.log("email: ", email);
+    console.log("password: ", password);
     console.debug("Welcome!");
   };
   const navigation = useNavigation();

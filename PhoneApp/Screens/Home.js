@@ -12,6 +12,14 @@ function Settings() {
   );
 }
 
+function HomeDetails() {
+  return (
+    <View style={styles.container}>
+      <Text>Home Screen</Text>
+      <Image source={Car} style={{ width: 350, height: 200 }} />
+    </View>
+  );
+}
 function Profile() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -29,11 +37,11 @@ const Home = () => {
           let iconName;
 
           if (route.name === "Profile") {
-            iconName = focused
-              ? "ios-information-circle"
-              : "ios-information-circle-outline";
+            iconName = focused ? "book" : "book-outline";
           } else if (route.name === "Settings") {
-            iconName = focused ? "ios-list-box" : "ios-list";
+            iconName = focused ? "bookmark" : "bookmark-outline";
+          } else if (route.name === "HomeDetails") {
+            iconName = focused ? "home" : "home-outline";
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -49,10 +57,7 @@ const Home = () => {
         ],
       }}
     >
-      <View style={styles.container}>
-        <Text>Home Screen</Text>
-        <Image source={Car} style={{ width: 350, height: 200 }} />
-      </View>
+      <Tabs.Screen name="HomeDetails" component={HomeDetails} />
       <Tabs.Screen name="Settings" component={Settings} />
       <Tabs.Screen name="Profile" component={Profile} />
     </Tabs.Navigator>
