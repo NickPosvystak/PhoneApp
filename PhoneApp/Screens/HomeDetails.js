@@ -1,3 +1,6 @@
+import { Image, StyleSheet, Text, View } from "react-native";
+import Car from "../Images/car.png";
+
 export default function HomeDetails() {
   return (
     <View style={styles.container}>
@@ -6,3 +9,10 @@ export default function HomeDetails() {
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
