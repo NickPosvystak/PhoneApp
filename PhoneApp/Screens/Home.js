@@ -3,30 +3,12 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import Car from "../Images/car.png";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import Profile from "./Profile";
+import Settings from "./Settings";
+import HomeDetails from "./HomeDetails";
 
-function Settings() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
 
-function HomeDetails() {
-  return (
-    <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Image source={Car} style={{ width: 350, height: 200 }} />
-    </View>
-  );
-}
-function Profile() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Profile!</Text>
-    </View>
-  );
-}
+
 const Tabs = createBottomTabNavigator();
 
 const Home = () => {
