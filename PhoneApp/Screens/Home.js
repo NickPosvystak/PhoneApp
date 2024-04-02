@@ -7,8 +7,6 @@ import Profile from "./Profile";
 import Settings from "./Settings";
 import HomeDetails from "./HomeDetails";
 
-
-
 const Tabs = createBottomTabNavigator();
 
 const Home = () => {
@@ -27,17 +25,15 @@ const Home = () => {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-      })}
-      tabBarOptions={{
-        tabBarActiveTintColor: "tomato",
-        tabBarInactiveTintColor: "gray",
         tabBarStyle: [
           {
             display: "flex",
           },
           null,
         ],
-      }}
+        tabBarActiveTintColor: "tomato",
+        tabBarInactiveTintColor: "gray",
+      })}
     >
       <Tabs.Screen name="HomeDetails" component={HomeDetails} />
       <Tabs.Screen name="Settings" component={Settings} />
