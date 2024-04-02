@@ -18,6 +18,7 @@ import { StatusBar } from "expo-status-bar";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./Screens/Home";
 
+
 const MainStack = createStackNavigator();
 
 export default function App() {
@@ -30,36 +31,41 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
-      <MainStack.Navigator>
-        <MainStack.Screen name="Registration" component={RegistrationScreen} />
-        <MainStack.Screen name="Login" component={LoginScreen} />
-        <MainStack.Screen
-          name="Home"
-          component={Home}
-          options={{
-            title: "Home Screen",
-            headerStyle: { backgroundColor: "#f4511e" },
-            headerTintColor: "#fff",
-            headerTitleStyle: {
-              fontWeight: "bold",
-              fontSize: 20,
-            },
-            headerRight: () => (
-              <Button
-                onPress={() => alert("This is a Home button!")}
-                title="Press Me"
-                color="#000"
-              />
-            ),
-          }}
-        />
-      </MainStack.Navigator>
+   
+        <NavigationContainer>
+          {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
+          <MainStack.Navigator>
+            <MainStack.Screen
+              name="Registration"
+              component={RegistrationScreen}
+            />
+            <MainStack.Screen name="Login" component={LoginScreen} />
+            <MainStack.Screen
+              name="Home"
+              component={Home}
+              options={{
+                title: "Home Screen",
+                headerStyle: { backgroundColor: "#f4511e" },
+                headerTintColor: "#fff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                  fontSize: 20,
+                },
+                headerRight: () => (
+                  <Button
+                    onPress={() => alert("This is a Home button!")}
+                    title="Press Me"
+                    color="#000"
+                  />
+                ),
+              }}
+            />
+          </MainStack.Navigator>
 
-      <StatusBar style="auto" />
-      {/* </TouchableWithoutFeedback> */}
-    </NavigationContainer>
+          <StatusBar style="auto" />
+          {/* </TouchableWithoutFeedback> */}
+        </NavigationContainer>
+     
   );
 }
 
